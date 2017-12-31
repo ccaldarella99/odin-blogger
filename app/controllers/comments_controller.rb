@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :require_login, except: [:create]
+  
   def index
   end
   
@@ -22,8 +24,13 @@ class CommentsController < ApplicationController
   end
   
   def destroy
+#    @comment = Comment.find(params[:comment_id])
+#    @comment.destroy
+#    flash.notice = "Comment has been removed."
+#    redirect_to article_path(@comment.article)
   end
   
+  private
   def comment_params
     params.require(:comment).permit(:author_name, :body)
   end

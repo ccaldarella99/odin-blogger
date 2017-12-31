@@ -4,6 +4,7 @@
 
 <p><%= link_to "<< Back to \'#{@article.title}\'", article_path(@article.id) %><p>
 
-<%= link_to "<< Back to Articles List", articles_path() %>
-
-<%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Do you really want to delete this article?"} %>
+<% if logged_in> %>
+	<%= link_to "<< Back to Articles List", articles_path() %>
+	<%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Do you really want to delete this article?"} %>
+<% end %>
